@@ -5,6 +5,7 @@ import './App.css';
 
 function App() {
 <<<<<<< HEAD
+<<<<<<< HEAD
   const [timerTime, setTimerTime] = useState<number>(0);
 
   const handleTimeSet = (seconds: number) => {
@@ -15,6 +16,12 @@ function App() {
   const handleTimeSet = (seconds: number) => {
     setTimerSeconds(seconds);
 >>>>>>> origin/main-merge
+=======
+  const [timerTime, setTimerTime] = useState<number>(0);
+
+  const handleSetTime = (seconds: number) => {
+    setTimerTime(seconds);
+>>>>>>> feat/countdown-timer-own
   };
 
   return (
@@ -23,6 +30,7 @@ function App() {
         <h1>Countdown Timer</h1>
       </header>
       <main>
+<<<<<<< HEAD
         <TimeInput onSetTime={handleTimeSet} />
 <<<<<<< HEAD
         {timerTime > 0 && (
@@ -35,6 +43,10 @@ function App() {
           <CountdownTimer initialTime={timerSeconds} />
 >>>>>>> origin/main-merge
         )}
+=======
+        <TimeInput onSetTime={handleSetTime} />
+        <CountdownTimer time={timerTime} />
+>>>>>>> feat/countdown-timer-own
       </main>
     </div>
   );

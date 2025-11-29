@@ -12,10 +12,10 @@ export const TimeInput: React.FC<TimeInputProps> = ({ onSetTime }) => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const totalSeconds =
-      parseInt(hours, 10) * 3600 +
-      parseInt(minutes, 10) * 60 +
-      parseInt(seconds, 10);
-    
+      (parseInt(hours, 10) || 0) * 3600 +
+      (parseInt(minutes, 10) || 0) * 60 +
+      (parseInt(seconds, 10) || 0);
+
     if (totalSeconds > 0) {
       onSetTime(totalSeconds);
     }
@@ -40,7 +40,9 @@ export const TimeInput: React.FC<TimeInputProps> = ({ onSetTime }) => {
         <label htmlFor="hours">Hours</label>
         <input
           id="hours"
-          type="text"
+          type="number"
+          min="0"
+          max="99"
           value={hours}
           onChange={(e) => handleNumberInput(e.target.value, 99, setHours)}
           placeholder="0"
@@ -50,7 +52,9 @@ export const TimeInput: React.FC<TimeInputProps> = ({ onSetTime }) => {
         <label htmlFor="minutes">Minutes</label>
         <input
           id="minutes"
-          type="text"
+          type="number"
+          min="0"
+          max="59"
           value={minutes}
           onChange={(e) => handleNumberInput(e.target.value, 59, setMinutes)}
           placeholder="0"
@@ -60,7 +64,9 @@ export const TimeInput: React.FC<TimeInputProps> = ({ onSetTime }) => {
         <label htmlFor="seconds">Seconds</label>
         <input
           id="seconds"
-          type="text"
+          type="number"
+          min="0"
+          max="59"
           value={seconds}
           onChange={(e) => handleNumberInput(e.target.value, 59, setSeconds)}
           placeholder="0"

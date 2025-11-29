@@ -10,7 +10,7 @@ export const CountdownTimer: React.FC<CountdownTimerProps> = ({
   const [timeLeft, setTimeLeft] = useState<number>(initialTime);
   const [isRunning, setIsRunning] = useState<boolean>(false);
   const [isComplete, setIsComplete] = useState<boolean>(false);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef<number | null>(null);
 
   // Update time when initialTime changes
   useEffect(() => {
@@ -22,7 +22,7 @@ export const CountdownTimer: React.FC<CountdownTimerProps> = ({
 
   // Timer countdown logic
   useEffect(() => {
-    if (isRunning && timeLeft > 0) {
+    if (isRunning) {
       intervalRef.current = setInterval(() => {
         setTimeLeft((prev) => {
           if (prev <= 1) {
@@ -33,19 +33,15 @@ export const CountdownTimer: React.FC<CountdownTimerProps> = ({
           return prev - 1;
         });
       }, 1000);
-    } else {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-        intervalRef.current = null;
-      }
     }
 
     return () => {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
+        intervalRef.current = null;
       }
     };
-  }, [isRunning, timeLeft]);
+  }, [isRunning]);
 
   const handleStart = () => {
     if (timeLeft > 0) {

@@ -40,6 +40,8 @@ main {
   flex-direction: column;
   gap: 3rem;
   align-items: center;
+  width: 100%;
+  max-width: 1400px;
 }
 
 .time-input {
@@ -222,6 +224,250 @@ main {
   }
 }
 
+/* Agent Task Manager Styles */
+.agent-task-manager {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.manager-header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.manager-header h2 {
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.agent-controls {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.agent-selector,
+.task-editor,
+.time-setter,
+.add-agent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.agent-selector label,
+.task-editor label,
+.add-agent label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.agent-selector select {
+  padding: 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: white;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.agent-selector select:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.task-input-group,
+.add-agent-group {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.task-input-group input,
+.add-agent-group input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.task-input-group input:focus,
+.add-agent-group input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.task-input-group button,
+.add-agent-group button {
+  padding: 0.75rem 1.5rem;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.task-input-group button:hover,
+.add-agent-group button:hover {
+  background: #5568d3;
+}
+
+.time-setter p {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.agents-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  width: 100%;
+}
+
+.agent-task {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.agent-task:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.agent-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.agent-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #667eea;
+  margin: 0;
+}
+
+.agent-id {
+  font-size: 0.875rem;
+  color: #666;
+  font-family: 'Courier New', monospace;
+}
+
+.task-info {
+  width: 100%;
+  text-align: center;
+}
+
+.task-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.task-description {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  padding: 0.75rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin: 0;
+}
+
+.task-complete {
+  padding: 1rem 2rem;
+  background: #10b981;
+  color: white;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+.agent-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.agent-action-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.agent-action-item span {
+  font-weight: 600;
+  color: #333;
+}
+
+.remove-agent-btn {
+  padding: 0.5rem 1rem;
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.remove-agent-btn:hover {
+  background: #dc2626;
+}
+
 @media (max-width: 768px) {
   .app {
     padding: 1rem;
@@ -258,6 +504,32 @@ main {
 
   .timer-controls button {
     width: 100%;
+  }
+
+  .agents-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .agent-controls {
+    padding: 1.5rem;
+  }
+
+  .task-input-group,
+  .add-agent-group {
+    flex-direction: column;
+  }
+
+  .task-input-group button,
+  .add-agent-group button {
+    width: 100%;
+  }
+
+  .agent-task {
+    padding: 1.5rem;
+  }
+
+  .time-value {
+    font-size: 2.5rem;
   }
 }
 

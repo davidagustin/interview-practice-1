@@ -1,11 +1,10 @@
-import { useState, FormEvent, ChangeEvent } from 'react';
+import { useState, FormEvent } from 'react';
 
 interface TimeInputProps {
   onSetTime: (seconds: number) => void;
-  disabled?: boolean;
 }
 
-export const TimeInput: React.FC<TimeInputProps> = ({ onSetTime, disabled = false }) => {
+export const TimeInput: React.FC<TimeInputProps> = ({ onSetTime }) => {
   const [hours, setHours] = useState<string>('0');
   const [minutes, setMinutes] = useState<string>('0');
   const [seconds, setSeconds] = useState<string>('0');
@@ -22,13 +21,16 @@ export const TimeInput: React.FC<TimeInputProps> = ({ onSetTime, disabled = fals
     }
   };
 
-  const handleNumberChange = (
-    e: ChangeEvent<HTMLInputElement>,
+  const handleNumberInput = (
+    value: string,
+    max: number,
     setter: (value: string) => void
   ) => {
-    const value = e.target.value;
     if (value === '' || /^\d+$/.test(value)) {
-      setter(value);
+      const num = value === '' ? 0 : parseInt(value, 10);
+      if (num >= 0 && num <= max) {
+        setter(value);
+      }
     }
   };
 
@@ -40,11 +42,8 @@ export const TimeInput: React.FC<TimeInputProps> = ({ onSetTime, disabled = fals
           id="hours"
           type="text"
           value={hours}
-          onChange={(e) => handleNumberChange(e, setHours)}
-          disabled={disabled}
-          min="0"
-          max="99"
-          aria-label="Hours"
+          onChange={(e) => handleNumberInput(e.target.value, 99, setHours)}
+          placeholder="0"
         />
       </div>
       <div className="input-group">
@@ -53,11 +52,8 @@ export const TimeInput: React.FC<TimeInputProps> = ({ onSetTime, disabled = fals
           id="minutes"
           type="text"
           value={minutes}
-          onChange={(e) => handleNumberChange(e, setMinutes)}
-          disabled={disabled}
-          min="0"
-          max="59"
-          aria-label="Minutes"
+          onChange={(e) => handleNumberInput(e.target.value, 59, setMinutes)}
+          placeholder="0"
         />
       </div>
       <div className="input-group">
@@ -66,17 +62,11 @@ export const TimeInput: React.FC<TimeInputProps> = ({ onSetTime, disabled = fals
           id="seconds"
           type="text"
           value={seconds}
-          onChange={(e) => handleNumberChange(e, setSeconds)}
-          disabled={disabled}
-          min="0"
-          max="59"
-          aria-label="Seconds"
+          onChange={(e) => handleNumberInput(e.target.value, 59, setSeconds)}
+          placeholder="0"
         />
       </div>
-      <button type="submit" disabled={disabled}>
-        Set Time
-      </button>
+      <button type="submit">Set Time</button>
     </form>
   );
 };
-

@@ -4,10 +4,17 @@ import { TimeInput } from './components/TimeInput';
 import './App.css';
 
 function App() {
+<<<<<<< HEAD
   const [timerTime, setTimerTime] = useState<number>(0);
 
   const handleTimeSet = (seconds: number) => {
     setTimerTime(seconds);
+=======
+  const [timerSeconds, setTimerSeconds] = useState<number>(0);
+
+  const handleTimeSet = (seconds: number) => {
+    setTimerSeconds(seconds);
+>>>>>>> origin/main-merge
   };
 
   return (
@@ -17,11 +24,16 @@ function App() {
       </header>
       <main>
         <TimeInput onSetTime={handleTimeSet} />
+<<<<<<< HEAD
         {timerTime > 0 && (
           <CountdownTimer 
             initialTime={timerTime} 
             onTimeSet={handleTimeSet}
           />
+=======
+        {timerSeconds > 0 && (
+          <CountdownTimer initialTime={timerSeconds} />
+>>>>>>> origin/main-merge
         )}
       </main>
     </div>

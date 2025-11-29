@@ -17,11 +17,14 @@ function App() {
       </header>
       <main>
         <TimeInput onSetTime={handleSetTime} />
-        <CountdownTimer initialTime={timerTime} onTimeSet={handleSetTime} />
+        {timerTime > 0 && (
+          <CountdownTimer 
+            initialTime={timerTime} 
+          />
+        )}
       </main>
     </div>
   );
 }
 
 export default App;
-
